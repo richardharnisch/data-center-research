@@ -1,0 +1,71 @@
+flowchart TB
+    researcher["Person: Experiment researcher"]
+    sources["External: traces, grid cases,<br/>weather, price, and carbon data"]
+    specialist["External specialist simulators"]
+
+    subgraph platform["Software System: Grid–Data Center Co-simulation Platform"]
+        workbench["Container: Experiment Workbench<br/>CLI, API, notebooks, and study definitions"]
+        scenario["Container: Scenario and Model Registry<br/>Versioned topology, parameters, profiles, and model manifests"]
+        orchestrator["Container: Experiment Orchestrator<br/>Builds run plans and manages run lifecycle"]
+        contracts["Container: Exchange Contract Registry<br/>Schemas, units, signs, clocks, interpolation, and ownership"]
+        coordinator["Container: Multi-rate Time Coordinator<br/>Time grants, events, coupling, and optional checkpoints"]
+        adapters["Container: Model Adapter Runtime<br/>Lifecycle, transport, unit conversion, and simulator wrappers"]
+
+        policy["Container: Policy and Control Runtime<br/>Demand shaping, DR, facility control, and grid-service logic"]
+        workload["Container: Workload and IT Simulator<br/>Queues, execution progress, performance, IT power, and heat"]
+        facility["Container: Data-Center Plant Simulator<br/>Electrical network, UPS/BESS, protection, cooling, and thermal state"]
+        grid["Container: Grid Simulator<br/>Power flow, electromechanical dynamics, controls, faults, and protection"]
+        signals["Container: Exogenous Signal Provider<br/>Weather, tariffs, carbon, regulation, and disturbance replay"]
+
+        results["Container: Results and Provenance Store<br/>Events, trajectories, metrics, manifests, logs, and checkpoints"]
+        analysis["Container: Analysis and Reporting<br/>Trade-off analysis, plots, comparisons, and conformance reports"]
+    end
+
+    researcher -->|"defines and starts a study"| workbench
+    workbench -->|"writes versioned configuration"| scenario
+    workbench -->|"submits run"| orchestrator
+    sources -->|"profiles and cases"| scenario
+    scenario -->|"resolved run manifest"| orchestrator
+    contracts -->|"validates configuration and bindings"| orchestrator
+
+    orchestrator -->|"starts and supervises participants"| coordinator
+    orchestrator -->|"creates adapter instances"| adapters
+    coordinator <-->|"time grants, events, and exchange barriers"| adapters
+    contracts -->|"typed bindings and conversion rules"| adapters
+
+    adapters -.->|"wraps or hosts"| policy
+    adapters -.->|"wraps or hosts"| workload
+    adapters -.->|"wraps or hosts"| facility
+    adapters -.->|"wraps or hosts"| grid
+    adapters -.->|"wraps or hosts"| signals
+    adapters <-->|"delegates when selected"| specialist
+
+    signals -->|"price, carbon, weather, regulation, faults"| policy
+    signals -->|"weather and ambient state"| facility
+    signals -->|"grid scenario events"| grid
+    policy -->|"admission, pause/resume, placement, and caps"| workload
+    policy -->|"P/Q, storage, cooling, and protection setpoints"| facility
+    policy -->|"optional bids or grid-control setpoints"| grid
+    workload -->|"IT power and rack heat by location"| facility
+    facility -->|"PCC net P/Q and facility breaker state"| grid
+    grid -->|"PCC voltage, angle, frequency, and disturbance state"| facility
+
+    coordinator -->|"canonical event and timing log"| results
+    adapters -->|"state, output, diagnostic, and provenance records"| results
+    scenario -->|"immutable run manifest"| results
+    analysis -->|"queries runs"| results
+    workbench -->|"requests reports"| analysis
+    analysis -->|"plots and tables"| workbench
+
+    classDef person fill:#fff2cc,stroke:#8a6d1d,color:#111;
+    classDef container fill:#d9eaf7,stroke:#24527a,color:#111,stroke-width:1.5px;
+    classDef kernel fill:#e2f0d9,stroke:#3c763d,color:#111,stroke-width:2px;
+    classDef domain fill:#fce4d6,stroke:#a64b00,color:#111,stroke-width:1.5px;
+    classDef store fill:#eadcf8,stroke:#674ea7,color:#111,stroke-width:1.5px;
+    classDef external fill:#eeeeee,stroke:#666,color:#111;
+    class researcher person;
+    class workbench,scenario,orchestrator,contracts,adapters container;
+    class coordinator kernel;
+    class policy,workload,facility,grid,signals domain;
+    class results,analysis store;
+    class sources,specialist external;

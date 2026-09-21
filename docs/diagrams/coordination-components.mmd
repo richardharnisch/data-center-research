@@ -1,0 +1,63 @@
+flowchart LR
+    workbench["Container: Experiment Workbench"]
+    registry["Container: Scenario, Model,<br/>and Contract Registries"]
+    participants["Domain adapters and<br/>simulation participants"]
+    store["Results and Provenance Store"]
+
+    subgraph coordinator["Container: Experiment Orchestrator and Multi-rate Time Coordinator"]
+        compiler["Component: Scenario Compiler<br/>Resolves versions, dependencies, clocks, and study profile"]
+        lifecycle["Component: Lifecycle Manager<br/>Instantiate, initialize, run, stop, and clean up"]
+        validator["Component: Contract Validator<br/>Checks schema, units, sign, range, ownership, and clock compatibility"]
+        scheduler["Component: Multi-rate Scheduler<br/>Computes safe grants from requested times and next events"]
+        eventQueue["Component: Superdense Event Queue<br/>Orders simultaneous discrete events without inventing elapsed time"]
+        coupling["Component: Coupling Manager<br/>Resolves PCC and other feedback loops at communication points"]
+        checkpoint["Component: State and Checkpoint Manager<br/>Snapshots participants when their capabilities permit"]
+        transport["Component: Transport Gateway<br/>Maps logical exchanges to HELICS, FMI, IPC, or process calls"]
+        supervisor["Component: Run Supervisor<br/>Timeouts, non-convergence, participant failure, and deterministic abort"]
+        recorder["Component: Provenance Recorder<br/>Records grants, events, conversions, iterations, and model hashes"]
+    end
+
+    workbench -->|"experiment specification"| compiler
+    registry -->|"models, profiles, and contracts"| compiler
+    compiler -->|"validated run plan"| lifecycle
+    compiler -->|"bindings"| validator
+    lifecycle -->|"participant lifecycle calls"| transport
+
+    participants -->|"time request and next-event time"| transport
+    transport -->|"candidate messages"| validator
+    validator -->|"valid timestamped values and events"| eventQueue
+    eventQueue -->|"next ordered event"| scheduler
+    scheduler -->|"time grant"| transport
+    transport -->|"grant, inputs, and control events"| participants
+
+    transport -->|"coupled outputs"| coupling
+    coupling -->|"iterate, accept, or reject step"| scheduler
+    coupling -->|"updated boundary values"| transport
+    checkpoint <-->|"save or restore state"| transport
+    scheduler -->|"checkpoint boundary"| checkpoint
+
+    supervisor -->|"health and stop decisions"| lifecycle
+    transport -->|"health and errors"| supervisor
+    validator --> recorder
+    scheduler --> recorder
+    eventQueue --> recorder
+    coupling --> recorder
+    lifecycle --> recorder
+    recorder -->|"canonical run record"| store
+
+    u01["UNRESOLVED U-01<br/>HELICS, FMI 3.0, hybrid, or custom transport"]
+    u02["UNRESOLVED U-02<br/>Conservative synchronization or rollback"]
+    u08["UNRESOLVED U-08<br/>Lagged, Jacobi, Gauss-Seidel, or iterative PCC coupling"]
+    u01 -.-> transport
+    u02 -.-> scheduler
+    u02 -.-> checkpoint
+    u08 -.-> coupling
+
+    classDef external fill:#eeeeee,stroke:#666,color:#111;
+    classDef component fill:#d9eaf7,stroke:#24527a,color:#111,stroke-width:1.5px;
+    classDef critical fill:#e2f0d9,stroke:#3c763d,color:#111,stroke-width:2px;
+    classDef decision fill:#fff2cc,stroke:#bf9000,color:#111,stroke-width:2px,stroke-dasharray:5 3;
+    class workbench,registry,participants,store external;
+    class compiler,lifecycle,validator,eventQueue,checkpoint,transport,supervisor,recorder component;
+    class scheduler,coupling critical;
+    class u01,u02,u08 decision;

@@ -1,0 +1,82 @@
+flowchart LR
+    subgraph utility["Utility-side physical system"]
+        generation["Bulk generation and<br/>grid-scale storage"]
+        transmission["Transmission network"]
+        distribution["Utility substation and<br/>distribution network<br/>(optional study boundary)"]
+        pcc["Point of Common Coupling<br/>meter and grid-side breaker"]
+    end
+
+    subgraph facilityElectrical["Data-center electrical system"]
+        switchgear["Facility switchgear and<br/>facility-side protection"]
+        transformer["Transformers and<br/>medium/low-voltage buses"]
+        mainBus["Facility electrical bus"]
+        ups["Distributed UPS and<br/>power conversion"]
+        bess["Central BESS"]
+        generator["On-site backup<br/>generation"]
+        pdu["PDUs and rack power<br/>distribution"]
+    end
+
+    subgraph computeThermal["Compute and thermal system"]
+        scheduler["Workload scheduler and<br/>power management"]
+        racks["Accelerators, servers,<br/>network, and storage"]
+        zones["Room/rack thermal mass<br/>and liquid/air loops"]
+        cooling["Cooling plant, pumps,<br/>fans, chillers, and storage"]
+        environment["Ambient environment<br/>and heat sink"]
+    end
+
+    subgraph control["Measurement and control overlay"]
+        gridControl["Grid operator controls,<br/>protection, and service signals"]
+        ems["Site energy-management and<br/>fast local control system"]
+        market["Price, carbon, weather,<br/>and workload forecasts"]
+    end
+
+    generation ==>|"three-phase electrical power"| transmission
+    transmission ==>|"three-phase electrical power"| distribution
+    distribution ==>|"three-phase electrical power"| pcc
+    pcc ==>|"import/export at defined P/Q sign"| switchgear
+    switchgear ==>|"facility supply"| transformer
+    transformer ==>|"facility supply"| mainBus
+    mainBus ==>|"conditioned supply"| ups
+    ups ==>|"rack supply"| pdu
+    pdu ==>|"IT electrical power"| racks
+    mainBus ==>|"cooling electrical power"| cooling
+    mainBus ==>|"charging power"| bess
+    bess ==>|"discharge P/Q"| mainBus
+    generator ==>|"backup or parallel supply"| mainBus
+
+    racks -->|"heat release"| zones
+    zones -->|"return air/coolant and heat"| cooling
+    cooling -->|"conditioned air/coolant"| zones
+    cooling -->|"rejected heat"| environment
+    environment -->|"temperature and humidity boundary"| cooling
+
+    market -.->|"forecasts and objectives"| ems
+    gridControl -.->|"regulation, emergency, or voltage-support request"| ems
+    pcc -.->|"V, angle, frequency, P/Q, and breaker telemetry"| ems
+    zones -.->|"temperature and flow telemetry"| ems
+    racks -.->|"utilization, progress, and QoS telemetry"| ems
+    bess -.->|"state of charge and limits"| ems
+
+    ems -.->|"admit, defer, pause/resume, place, cap"| scheduler
+    scheduler -.->|"work assignment and device caps"| racks
+    ems -.->|"P/Q and mode setpoints"| ups
+    ems -.->|"P/Q and state-of-charge targets"| bess
+    ems -.->|"temperature, flow, and power setpoints"| cooling
+    ems -.->|"start/stop and power target"| generator
+    ems -.->|"trip/reconnect settings within allowed policy"| switchgear
+    ems -.->|"availability and telemetry"| gridControl
+
+    powerLegend["Thick arrow: electrical power"]
+    heatLegend["Solid thin arrow: thermal/material influence"]
+    infoLegend["Dashed arrow: information or control"]
+
+    classDef utilityStyle fill:#d9eaf7,stroke:#24527a,color:#111,stroke-width:1.5px;
+    classDef electricalStyle fill:#fce4d6,stroke:#a64b00,color:#111,stroke-width:1.5px;
+    classDef thermalStyle fill:#eadcf8,stroke:#674ea7,color:#111,stroke-width:1.5px;
+    classDef controlStyle fill:#d9ead3,stroke:#38761d,color:#111,stroke-width:1.5px;
+    classDef legend fill:#ffffff,stroke:#999,color:#333,stroke-dasharray:3 3;
+    class generation,transmission,distribution,pcc utilityStyle;
+    class switchgear,transformer,mainBus,ups,bess,generator,pdu electricalStyle;
+    class scheduler,racks,zones,cooling,environment thermalStyle;
+    class gridControl,ems,market controlStyle;
+    class powerLegend,heatLegend,infoLegend legend;
