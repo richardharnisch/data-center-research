@@ -4,6 +4,8 @@
 **Purpose:** establish a literature-backed, implementation-neutral structure for a modular Grid–Data Center (Grid–DC) co-simulation platform.<br>
 **First vertical slice:** demand shaping in response to price or carbon intensity. This is an example study, not the platform's global objective.
 
+**Rendered views:** [simplified overview](diagrams/rendered/grid-dc-overview.svg) · [visual gallery](grid-dc-simulation-architecture-visualization.md) · [seven-page PDF](grid-dc-simulation-architecture-visualization.pdf)
+
 ## Contents
 
 1. [Executive summary](#1-executive-summary)

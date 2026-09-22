@@ -1,0 +1,76 @@
+---
+config:
+  layout: elk
+---
+flowchart LR
+ subgraph DC["Data Center"]
+    direction TB
+        SCHED["Workload Manager:<br>Queue, place, defer, pause, cap power"]
+        IT["IT system<br>Compute, storage, network"]
+        COOL["Cooling system<br>Chillers, heat pumps, fans. Can be air, water, both"]
+        POWER["Power Delivery &amp; Connection<br>Point of Common Coupling, Breaker, Power Delivery Unit"]
+        UPS["UPS &amp; power conversion<br>Stabilizes supply, provides ride-through, change source"]
+        STORE["Site energy storage<br>Battery, stores state of charge. Can be active or reactive"]
+        ONSITE["On-site Energy Generation<br>Could be diesel, gas, solar, geothermal, or even nuclear"]
+        CONTROL["Facility Control &amp; Protection<br>Coordinates workload, storage, cooling. Trips"]
+  end
+ subgraph GRID["Energy System"]
+    direction TB
+        GEN["Generation and Storage<br>Various generation methods with different carbon intensities and prices"]
+        TRANS["Transmission System Operator<br>Manages Bulk transfers and frequency stability"]
+        DIST["Distribution Network Operator<br>Local deliveries &amp; Substations"]
+        SIGNALS["Grid Operation &amp; Market<br>Determines price, Carbon, DR requirements"]
+  end
+    AI["AI workload<br>Labs, consumers"] --> TRAIN["Training<br>Large synchronized jobs"] & INFER["Inference<br>Variable, smooth demand"]
+    SCHED -- dispatch work --> IT
+    IT -- heat --> COOL
+    COOL -- cools &amp; sets temperature limits --> IT
+    POWER == facility supply ==> UPS
+    UPS == IT power ==> IT
+    POWER == cooling power ==> COOL
+    POWER <== charge / discharge ==> STORE
+    ONSITE == power ==> POWER
+    POWER -. voltage, frequency, breaker state .-> CONTROL
+    CONTROL -. defer, pause, cap signals .-> SCHED
+    CONTROL -. cooling setpoint .-> COOL
+    CONTROL -. storage and UPS setpoints .-> STORE
+    CONTROL -. "ride-through · transfer · trip" .-> UPS
+    TRAIN -. jobs, potentially deadlines .-> SCHED
+    INFER -. requests and service targets .-> SCHED
+    WEATHER["Weather Conditions"] -. ambient temperature, humidity .-> COOL
+    GEN == electrical power ==> TRANS
+    TRANS == bulk supply ==> DIST
+    POWER <== grid supply / optional export ==> DIST
+    POWER -. net active &amp; reactive power, breaker state .-> SIGNALS
+    SIGNALS -. "price and carbon intensity, potentially grid-service requests" .-> CONTROL
+    POWERLEGEND["Thick arrow: electrical power"]
+    CAUSALLEGEND["Solid arrow: workload or heat"]
+    CONTROLLEGEND["Dashed arrow: control, signal, or measurement"]
+
+     SCHED:::it
+     IT:::it
+     COOL:::thermal
+     POWER:::electrical
+     UPS:::electrical
+     STORE:::electrical
+     ONSITE:::electrical
+     CONTROL:::control
+     GEN:::grid
+     TRANS:::grid
+     DIST:::grid
+     SIGNALS:::control
+     AI:::workload
+     TRAIN:::workload
+     INFER:::workload
+     WEATHER:::external
+     POWERLEGEND:::legend
+     CAUSALLEGEND:::legend
+     CONTROLLEGEND:::legend
+    classDef workload fill:#fff2cc,stroke:#8a6d1d,color:#111,stroke-width:1.5px
+    classDef it fill:#d9eaf7,stroke:#24527a,color:#111,stroke-width:1.5px
+    classDef thermal fill:#eadcf8,stroke:#674ea7,color:#111,stroke-width:1.5px
+    classDef electrical fill:#fce4d6,stroke:#a64b00,color:#111,stroke-width:1.5px
+    classDef control fill:#d9ead3,stroke:#38761d,color:#111,stroke-width:1.5px
+    classDef grid fill:#d9eaf7,stroke:#24527a,color:#111,stroke-width:1.5px
+    classDef external fill:#eeeeee,stroke:#666,color:#111
+    classDef legend fill:#ffffff,stroke:#999,color:#333,stroke-dasharray:3 3
