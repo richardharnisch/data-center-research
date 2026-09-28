@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 
 from .analysis import make_curves
 from .data import credentials, date_bounds, fetch_dataset, load_dataset
-from .report import write_outputs
+from .outputs import write_outputs
 
 
 def main():
@@ -41,7 +41,7 @@ def main():
         if args.command in ("analyze", "run"):
             curves = make_curves(frame, args.power_mw)
             write_outputs(frame, curves, metadata, args.output_dir, args.power_mw)
-            print(f"Saved curves and report: {args.output_dir / 'report.md'}")
+            print(f"Saved curves and figures to {args.output_dir}")
     except (ValueError, RuntimeError, OSError) as error:
         parser.exit(1, f"Error: {error}\n")
 

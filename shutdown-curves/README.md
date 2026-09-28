@@ -1,6 +1,6 @@
 # Dutch data-center shutdown curves
 
-This experiment asks how much electricity cost or attributed CO₂ remains when a constant-power data center switches off during the highest-price or highest-carbon hours. It compares **daily, weekly, and monthly** selection over the **latest complete year**. Start with [the generated report](results/report.md), [total-cost curves](results/absolute_curves.png), or [normalized curves](results/relative_curves.png).
+This experiment asks how much electricity cost or attributed CO₂ remains when a constant-power data center switches off during the highest-price or highest-carbon hours. It compares **daily, weekly, and monthly** selection over the **latest complete year**. Start with the [total-cost curves](results/absolute_curves.png), [normalized curves](results/relative_curves.png), or [numeric results](results/curves.csv).
 
 ## Reproduce the delivered result
 
@@ -23,7 +23,7 @@ uv run shutdown-curves run \
 
 Exported environment variables take precedence over values in `.env`. Keys are not copied to generated files or logged.
 
-Omitting dates selects the year ending at the start of today in Europe/Amsterdam. `--end` is exclusive. The delivered interval is 28 September 2025 through 27 September 2026. Raw responses are reused by default; add `--refresh` to retrieve revisions from the providers. If a provider has not yet published the last required day, fetching fails with a coverage report; choose an explicit earlier `--end` to obtain a full year of complete data. There is no silent shortening or filling of the study period.
+Omitting dates selects the year ending at the start of today in Europe/Amsterdam. `--end` is exclusive. The delivered interval is 28 September 2025 through 27 September 2026. Raw responses are reused by default; add `--refresh` to retrieve revisions from the providers. If a provider has not yet published the last required day, fetching fails with a coverage audit; choose an explicit earlier `--end` to obtain a full year of complete data. There is no silent shortening or filling of the study period.
 
 Shutdowns use exact durations. For example, 5% of a 24-hour day means one hour and twelve minutes off, assuming both signals are constant within an hour. The facility is fully off during those twelve minutes; it is not partially throttled.
 
@@ -36,7 +36,7 @@ The source settings are adapted from the download module and API constants in th
 
 The old project's timestamp conversion used only the date portion of the ENTSO-E Period start, discarding its hour. Its request settings are reused here, but its timestamp conversion and CSV appending are replaced. The old project is unchanged.
 
-Official references: [ENTSO-E Transparency Platform](https://transparency.entsoe.eu/), [NED API documentation](https://ned.nl/nl/handleiding-api), [NED definitions](https://ned.nl/nl/definities), and [NED data catalogue](https://ned.nl/nl/datacatalogus). NED documents this as electricity **production** and CO₂, so the report does not relabel it as flow-traced consumption or lifecycle CO₂e.
+Official references: [ENTSO-E Transparency Platform](https://transparency.entsoe.eu/), [NED API documentation](https://ned.nl/nl/handleiding-api), [NED definitions](https://ned.nl/nl/definities), and [NED data catalogue](https://ned.nl/nl/datacatalogus). NED documents this as electricity **production** and CO₂, so these results are not flow-traced consumption or lifecycle CO₂e.
 
 Both source series must cover the same complete set of hours. Duplicate identical source intervals are deduplicated; conflicting values, missing intervals, missing carbon factors, and unexpected units are errors. Missing values are neither interpolated nor dropped. Local calendar grouping handles the 23-hour spring day and 25-hour autumn day. ISO weeks begin on Monday. The first and last calendar weeks/months may be partial: each receives the requested shutdown fraction of its observed hours, which keeps every curve on the same study interval. `run.json` enumerates every period's hour count. Weeks and months are not nested partitions, so neither is guaranteed to outperform the other.
 
@@ -52,7 +52,7 @@ This is a fixed-load, zero-off-power baseline. Switching off discards available 
 
 ## Files
 
-Every generated output directory receives a `.gitignore` containing only `*`, so its contents are ignored by Git regardless of the directory name. The raw response cache is also ignored. Recreate the reports and figures with the analysis command above. Saved source-file references are relative to the configured data directory, so metadata remains portable even when `--data-dir` is an absolute path.
+Every generated output directory receives a `.gitignore` containing only `*`, so its contents are ignored by Git regardless of the directory name. The raw response cache is also ignored. Recreate the CSV files and figures with the analysis command above. Saved source-file references are relative to the configured data directory, so metadata remains portable even when `--data-dir` is an absolute path.
 
 | File | Contents |
 | --- | --- |
@@ -60,7 +60,6 @@ Every generated output directory receives a `.gitignore` containing only `*`, so
 | `data/provenance.json` | Date range, units, source requests, retrieval timestamps, SHA-256 hashes |
 | `data/coverage.json` | Completeness audit, including exact missing timestamps if collection fails |
 | `data/raw/` | Cached native XML/JSON and request metadata; ignored by Git |
-| `results/report.md` | Findings and interpretation |
 | `results/absolute_curves.*` | Total electricity cost and attributed carbon versus uptime, PNG/SVG |
 | `results/relative_curves.*` | Fractions of always-on cost and carbon remaining, PNG/SVG |
 | `results/savings_curves.*` | Fractions saved versus uptime, PNG/SVG |

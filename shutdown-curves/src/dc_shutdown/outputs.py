@@ -1,4 +1,4 @@
-"""Export figures, machine-readable curves and a concise research report."""
+"""Export figures, machine-readable curves, and example schedules."""
 
 import json
 from pathlib import Path
@@ -10,7 +10,6 @@ import matplotlib.pyplot as plt
 from matplotlib.ticker import PercentFormatter
 
 from .analysis import PERIODS, on_fractions, period_coverage
-from .data import CARBON, PRICE
 
 COLORS = {"daily": "#2673A6", "weekly": "#B66026", "monthly": "#21836C"}
 
@@ -142,52 +141,3 @@ def write_outputs(frame, curves, metadata: dict, output: Path, power_mw: float) 
                     frame, period, objective, fraction
                 )
     schedules.to_csv(output / "example_schedules.csv")
-    baseline = curves.iloc[0]
-    lines = [
-        "# Dutch data-center shutdown experiment",
-        "",
-        f"Study window: **{start} to {end}, end exclusive**, Europe/Amsterdam; **{len(frame):,} complete hours**. Both signals cover every hour. Facility power: **{power_mw:g} MW when on**, zero when off.",
-        "",
-        f"Always-on baseline: **€{baseline.baseline_cost_eur:,.2f}** electricity cost and **{baseline.baseline_attributed_co2_kg / 1000:,.2f} tonnes attributed CO₂**. Mean price: €{frame[PRICE].mean():.2f}/MWh; mean production carbon intensity: {frame[CARBON].mean():.2f} gCO₂/kWh. Negative-price hours: {int((frame[PRICE] < 0).sum())}.",
-        "",
-        "![Remaining cost and carbon versus uptime](relative_curves.png)",
-        "",
-        "## Savings examples",
-        "",
-        "Each row below reports price savings from a price-ranked schedule and carbon savings from a separate carbon-ranked schedule. These two savings are not generally achieved by the same schedule. Both outcomes for each individual schedule are in `curves.csv`.",
-        "",
-        "| Selection period | Requested time off | Actual time off | Price saving (price-ranked) | CO₂ saving (carbon-ranked) |",
-        "| --- | ---: | ---: | ---: | ---: |",
-    ]
-    for period in PERIODS:
-        for fraction in (0.05, 0.10, 0.50):
-            subset = examples[
-                (examples.period == period) & (examples.requested_shutdown_fraction == fraction)
-            ]
-            price = subset[subset.objective == "price"].iloc[0]
-            carbon = subset[subset.objective == "carbon"].iloc[0]
-            lines.append(
-                f"| {period.capitalize()} | {fraction:.0%} | {1 - price.uptime_fraction:.2%} | {price.electricity_saving_fraction:.2%} | {carbon.carbon_saving_fraction:.2%} |"
-            )
-    lines += [
-        "",
-        "## Interpretation",
-        "",
-        "These are retrospective, perfect-information curves for discarded work. They do not model completed jobs, workload recovery, service quality, startup energy, minimum on/off durations, cooling, standby power, or price changes caused by the data center. Uptime is a capacity-availability proxy; it is not measured application performance.",
-        "",
-        "Price is wholesale day-ahead energy cost only; taxes, network charges, contracts, and fixed charges are excluded. Negative prices are retained, so cost can be negative and savings can exceed 100% at low uptime. Fractional savings are undefined if the always-on baseline is nonpositive.",
-        "",
-        "Carbon is attributed using NED's average Dutch electricity-production CO₂ factor (type 27, Providing, Current). It is not a marginal avoided-emissions estimate, an import-adjusted consumption mix, a full lifecycle CO₂e assessment, or a carbon-price calculation.",
-        "",
-        "Periods are local calendar days, ISO Monday–Sunday weeks, and calendar months. The first and last weeks/months can be partial and use their observed hours. DST days contain 23 or 25 actual hours. Monthly and weekly partitions are not nested, so neither curve must dominate the other.",
-        "",
-        "Shutdowns use exact durations, covering the highest-ranked hours and, when needed, part of one boundary hour per period. For example, 5% of 24 hours is 1 hour 12 minutes. This is binary on/off in time, with hourly price and carbon held constant; it does not model partial-power throttling.",
-        "",
-        "## Sources and reproducibility",
-        "",
-        "[ENTSO-E Transparency Platform](https://transparency.entsoe.eu/) supplies Dutch day-ahead prices. [NED definitions](https://ned.nl/nl/definities) identify the production-mix signal; [NED API documentation](https://ned.nl/nl/handleiding-api) documents its units and request parameters. Native responses are cached locally and checksummed. `run.json` records source requests, retrieval timestamps, hashes, study bounds, period lengths, and assumptions. `data/provenance.json` identifies the input CSV checksum.",
-        "",
-        "See `absolute_curves.png` for total euros and kilograms, `relative_curves.png` for the proportion remaining, and `savings_curves.png` for the proportion saved. SVG versions and the full numeric curves are included.",
-        "",
-    ]
-    (output / "report.md").write_text("\n".join(lines))
