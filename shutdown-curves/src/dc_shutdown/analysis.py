@@ -21,12 +21,16 @@ def period_labels(index: pd.DatetimeIndex, period: str) -> np.ndarray:
     raise ValueError(f"Unknown period: {period}")
 
 
-def on_fractions(frame: pd.DataFrame, period: str, objective: str,
-                 shutdown_fraction: float, whole_hours: bool = False) -> np.ndarray:
+def on_fractions(
+    frame: pd.DataFrame,
+    period: str,
+    objective: str,
+    shutdown_fraction: float,
+) -> np.ndarray:
     """Remove highest-value hours per calendar period, with stable chronological ties.
 
     A fractional boundary hour denotes full shutdown for part of that hour, not
-    reduced facility power. Whole-hour mode floors downtime within each period.
+    reduced facility power.
     """
     if not 0 <= shutdown_fraction <= 1:
         raise ValueError("Shutdown fraction must lie between zero and one")
@@ -39,17 +43,23 @@ def on_fractions(frame: pd.DataFrame, period: str, objective: str,
         off_hours = shutdown_fraction * len(positions)
         full = int(np.floor(off_hours + 1e-10))
         on[ranked[:full]] = 0
-        if not whole_hours and full < len(ranked):
+        if full < len(ranked):
             on[ranked[full]] = 1 - max(0, off_hours - full)
     return on
 
 
-def make_curves(frame: pd.DataFrame, power_mw: float = 1.0,
-                whole_hours: bool = False) -> pd.DataFrame:
+def make_curves(frame: pd.DataFrame, power_mw: float = 1.0) -> pd.DataFrame:
     if not np.isfinite(power_mw) or power_mw <= 0:
         raise ValueError("Facility power must be finite and positive")
-    if frame.empty or frame.index.tz is None or not frame.index.is_monotonic_increasing or frame.index.has_duplicates:
-        raise ValueError("Need a nonempty, ordered, timezone-aware hourly dataset without duplicates")
+    if (
+        frame.empty
+        or frame.index.tz is None
+        or not frame.index.is_monotonic_increasing
+        or frame.index.has_duplicates
+    ):
+        raise ValueError(
+            "Need a nonempty, ordered, timezone-aware hourly dataset without duplicates"
+        )
     if len(frame) > 1 and not ((frame.index[1:] - frame.index[:-1]) == pd.Timedelta(hours=1)).all():
         raise ValueError("Dataset must be hourly and complete")
     if not np.isfinite(frame[[PRICE, CARBON]].to_numpy()).all() or (frame[CARBON] < 0).any():
@@ -62,21 +72,28 @@ def make_curves(frame: pd.DataFrame, power_mw: float = 1.0,
         for objective in OBJECTIVES:
             for percentage in range(101):
                 shutdown = percentage / 100
-                on = on_fractions(frame, period, objective, shutdown, whole_hours)
+                on = on_fractions(frame, period, objective, shutdown)
                 cost, emissions = float(on @ prices), float(on @ carbon)
                 cost_fraction = cost / baseline_cost if baseline_cost > 0 else np.nan
                 carbon_fraction = emissions / baseline_carbon if baseline_carbon > 0 else np.nan
-                rows.append({"period": period, "objective": objective,
-                             "requested_shutdown_fraction": shutdown,
-                             "uptime_fraction": float(on.mean()), "on_hours": float(on.sum()),
-                             "shutdown_hours": float(len(frame) - on.sum()),
-                             "electricity_cost_eur": cost, "attributed_co2_kg": emissions,
-                             "electricity_cost_fraction": cost_fraction,
-                             "carbon_fraction": carbon_fraction,
-                             "electricity_saving_fraction": 1 - cost_fraction,
-                             "carbon_saving_fraction": 1 - carbon_fraction,
-                             "baseline_cost_eur": float(baseline_cost),
-                             "baseline_attributed_co2_kg": float(baseline_carbon)})
+                rows.append(
+                    {
+                        "period": period,
+                        "objective": objective,
+                        "requested_shutdown_fraction": shutdown,
+                        "uptime_fraction": float(on.mean()),
+                        "on_hours": float(on.sum()),
+                        "shutdown_hours": float(len(frame) - on.sum()),
+                        "electricity_cost_eur": cost,
+                        "attributed_co2_kg": emissions,
+                        "electricity_cost_fraction": cost_fraction,
+                        "carbon_fraction": carbon_fraction,
+                        "electricity_saving_fraction": 1 - cost_fraction,
+                        "carbon_saving_fraction": 1 - carbon_fraction,
+                        "baseline_cost_eur": float(baseline_cost),
+                        "baseline_attributed_co2_kg": float(baseline_carbon),
+                    }
+                )
     return pd.DataFrame(rows)
 
 

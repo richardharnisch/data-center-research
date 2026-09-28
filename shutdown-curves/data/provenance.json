@@ -1,0 +1,1478 @@
+{
+  "start_local_inclusive": "2025-09-28T00:00:00+02:00",
+  "end_local_exclusive": "2026-09-28T00:00:00+02:00",
+  "timezone": "Europe/Amsterdam",
+  "expected_hours": 8760,
+  "observed_complete_hours": 8760,
+  "missing_hours": {
+    "price_eur_per_mwh": [],
+    "carbon_gco2_per_kwh": []
+  },
+  "source_file_base": "data_directory",
+  "sources": [
+    {
+      "file": "raw/entsoe/fe8c35224422b59acff0.xml",
+      "source": "entsoe",
+      "url": "https://web-api.tp.entsoe.eu/api",
+      "parameters": {
+        "documentType": "A44",
+        "in_Domain": "10YNL----------L",
+        "out_Domain": "10YNL----------L",
+        "periodStart": "202509272200",
+        "periodEnd": "202509302200"
+      },
+      "retrieved_at_utc": "2026-09-28T08:52:38.548779+00:00",
+      "sha256": "5e4db5fd043db007e573d7478f000eda2a6d177721b3748940fdcf77d68055e1"
+    },
+    {
+      "file": "raw/ned/1e86cbcea3f4c6545629.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 1,
+        "validfrom[after]": "2025-09-27",
+        "validfrom[strictly_before]": "2025-10-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:52:38.811644+00:00",
+      "sha256": "53df58b69b922812dbbe0e4d82206faeb2a102e728a6995b8161c870af0c545d"
+    },
+    {
+      "file": "raw/entsoe/1cd6ebcdee9c02180c36.xml",
+      "source": "entsoe",
+      "url": "https://web-api.tp.entsoe.eu/api",
+      "parameters": {
+        "documentType": "A44",
+        "in_Domain": "10YNL----------L",
+        "out_Domain": "10YNL----------L",
+        "periodStart": "202509302200",
+        "periodEnd": "202510312300"
+      },
+      "retrieved_at_utc": "2026-09-28T08:52:39.359899+00:00",
+      "sha256": "c44fd8ff491933104ef10bb2223f4c29cf5621755a58f9ae305a8489078d1291"
+    },
+    {
+      "file": "raw/ned/d52dedcfffb7c003d45f.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 1,
+        "validfrom[after]": "2025-09-30",
+        "validfrom[strictly_before]": "2025-11-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:52:43.780263+00:00",
+      "sha256": "d53d07711da952683363e8f326545b332f99a0c6de35bb6bf246e6cfde3cb5f1"
+    },
+    {
+      "file": "raw/ned/e7b352f5e52266a14865.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 2,
+        "validfrom[after]": "2025-09-30",
+        "validfrom[strictly_before]": "2025-11-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:52:44.718436+00:00",
+      "sha256": "55ae776e0cff4f95f55f7fc7ddc713363c4663e00bdc6c39ea5aa7dd3341e677"
+    },
+    {
+      "file": "raw/ned/281324ae66d73823cf4d.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 3,
+        "validfrom[after]": "2025-09-30",
+        "validfrom[strictly_before]": "2025-11-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:52:45.546442+00:00",
+      "sha256": "e450f4b03619b0a8222ab0f8379db3700ded2dde456689fc2666fc766e14a310"
+    },
+    {
+      "file": "raw/ned/25dfa86bd9e2d6c05a85.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 4,
+        "validfrom[after]": "2025-09-30",
+        "validfrom[strictly_before]": "2025-11-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:52:47.108303+00:00",
+      "sha256": "9ca3da7cf61a7d734ff787c60af3cf0a832d4d04f714ba63b5ec2d7a4068b29a"
+    },
+    {
+      "file": "raw/ned/f4e8aad9222447c425d1.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 5,
+        "validfrom[after]": "2025-09-30",
+        "validfrom[strictly_before]": "2025-11-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:52:48.889796+00:00",
+      "sha256": "3dfbd454fb0423d6a7efa45fe8844f18611c5c9f17adce1b94baba39738ab299"
+    },
+    {
+      "file": "raw/ned/be29800fc47eafebe63f.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 6,
+        "validfrom[after]": "2025-09-30",
+        "validfrom[strictly_before]": "2025-11-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:52:50.287519+00:00",
+      "sha256": "128333059028910ff2f370b5ea82ba2ee6edc2e9671d7cd07d950e9ecd6b37c1"
+    },
+    {
+      "file": "raw/entsoe/9114514305f3510bedb6.xml",
+      "source": "entsoe",
+      "url": "https://web-api.tp.entsoe.eu/api",
+      "parameters": {
+        "documentType": "A44",
+        "in_Domain": "10YNL----------L",
+        "out_Domain": "10YNL----------L",
+        "periodStart": "202510312300",
+        "periodEnd": "202511302300"
+      },
+      "retrieved_at_utc": "2026-09-28T08:52:50.786518+00:00",
+      "sha256": "11f3b9ad521b8053b1af0eb13be49884aa56748e78544d090b5e9093c2518658"
+    },
+    {
+      "file": "raw/ned/00a563f26411ae82d1c6.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 1,
+        "validfrom[after]": "2025-10-31",
+        "validfrom[strictly_before]": "2025-12-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:52:51.936926+00:00",
+      "sha256": "c011bbdaef4872730517980b8a21cb8e1c1c5761c41c21e2c4fca75fd64ea9e2"
+    },
+    {
+      "file": "raw/ned/e9b3af31d6cd60e4d457.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 2,
+        "validfrom[after]": "2025-10-31",
+        "validfrom[strictly_before]": "2025-12-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:52:53.510665+00:00",
+      "sha256": "84bd3b64778a16076f48c6b6d7c43df5a7d0930f5ec456852e348474405e8b5a"
+    },
+    {
+      "file": "raw/ned/466f4f770fd5e42e567e.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 3,
+        "validfrom[after]": "2025-10-31",
+        "validfrom[strictly_before]": "2025-12-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:52:55.106876+00:00",
+      "sha256": "4f1aa14d5db08a75ed26b5623964416aff2bf2ad4df8700c3532c9c8e7f79040"
+    },
+    {
+      "file": "raw/ned/10facaa56986c71017be.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 4,
+        "validfrom[after]": "2025-10-31",
+        "validfrom[strictly_before]": "2025-12-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:52:56.712440+00:00",
+      "sha256": "b8f5b7cbbc56af75a14cddb5d06ee42756ab96bb618b009b3d40931ca2f66823"
+    },
+    {
+      "file": "raw/ned/2218668c72fd854f3a80.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 5,
+        "validfrom[after]": "2025-10-31",
+        "validfrom[strictly_before]": "2025-12-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:52:58.305098+00:00",
+      "sha256": "adcb7d0f8ae02e1f6030d12c3cf76addef428828ceb3ea9d2bf31487f3649f96"
+    },
+    {
+      "file": "raw/ned/4eb1ffd4972a78211a41.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 6,
+        "validfrom[after]": "2025-10-31",
+        "validfrom[strictly_before]": "2025-12-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:52:59.862371+00:00",
+      "sha256": "3d2fff4bc8e0cd9e9b70469490a5298bc5d6c30148de0cc999f642cb8ed6e492"
+    },
+    {
+      "file": "raw/entsoe/15d1f285bed16f86ab53.xml",
+      "source": "entsoe",
+      "url": "https://web-api.tp.entsoe.eu/api",
+      "parameters": {
+        "documentType": "A44",
+        "in_Domain": "10YNL----------L",
+        "out_Domain": "10YNL----------L",
+        "periodStart": "202511302300",
+        "periodEnd": "202512312300"
+      },
+      "retrieved_at_utc": "2026-09-28T08:53:00.834461+00:00",
+      "sha256": "2d10bab717fcaa05b95b93abfa020ae72579153e6e9ea6732d1e3ba5ec7e332a"
+    },
+    {
+      "file": "raw/ned/a846524287207239f8e9.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 1,
+        "validfrom[after]": "2025-11-30",
+        "validfrom[strictly_before]": "2026-01-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:53:01.646423+00:00",
+      "sha256": "92a81a5c8be9852424980717e88b32d661f055c13d85d4cf53f091a9cf2f0827"
+    },
+    {
+      "file": "raw/ned/0be7353e57eba896517f.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 2,
+        "validfrom[after]": "2025-11-30",
+        "validfrom[strictly_before]": "2026-01-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:53:03.137697+00:00",
+      "sha256": "bb1c9cbb03e25a86a63cd71c6f56164457bbeb9fb3e27164a91b8f6143b13844"
+    },
+    {
+      "file": "raw/ned/f7352ffd1b362aa1db9a.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 3,
+        "validfrom[after]": "2025-11-30",
+        "validfrom[strictly_before]": "2026-01-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:53:04.756999+00:00",
+      "sha256": "a93ad6f7588c23b7d29cc81b6f6aac642dcf7c35033952d6dc929dbe3bf1c9b6"
+    },
+    {
+      "file": "raw/ned/60d42d080bf29479efee.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 4,
+        "validfrom[after]": "2025-11-30",
+        "validfrom[strictly_before]": "2026-01-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:53:06.328992+00:00",
+      "sha256": "fd3a5c2ab1e1356f03b42a52dc9c630ddb03bc7dd40318a3d0569dbab0b3456a"
+    },
+    {
+      "file": "raw/ned/912d8ccec04592a5f026.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 5,
+        "validfrom[after]": "2025-11-30",
+        "validfrom[strictly_before]": "2026-01-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:53:07.937056+00:00",
+      "sha256": "daf43f6254d824707f5c2557dd015cf79cd52bdb3be6630ed6012c5b7d90583c"
+    },
+    {
+      "file": "raw/ned/e875d67bc240443fc53e.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 6,
+        "validfrom[after]": "2025-11-30",
+        "validfrom[strictly_before]": "2026-01-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:53:09.587023+00:00",
+      "sha256": "4f2c102f667ac68818065a89685ead1968beccac5d7366813ee36f08336b4b85"
+    },
+    {
+      "file": "raw/entsoe/e5b27140c774f9c2ec9a.xml",
+      "source": "entsoe",
+      "url": "https://web-api.tp.entsoe.eu/api",
+      "parameters": {
+        "documentType": "A44",
+        "in_Domain": "10YNL----------L",
+        "out_Domain": "10YNL----------L",
+        "periodStart": "202512312300",
+        "periodEnd": "202601312300"
+      },
+      "retrieved_at_utc": "2026-09-28T08:53:09.760579+00:00",
+      "sha256": "1557cc619c3577cc708db541d030a949d3e357b81cd748d84c38b9bd9960bafc"
+    },
+    {
+      "file": "raw/ned/b9cab2decf995362c6d1.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 1,
+        "validfrom[after]": "2025-12-31",
+        "validfrom[strictly_before]": "2026-02-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:53:11.128400+00:00",
+      "sha256": "52f00af45a4605f7721a87808f1a482222f575c95161ba158635c12269357952"
+    },
+    {
+      "file": "raw/ned/5998e00215c4460f01c3.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 2,
+        "validfrom[after]": "2025-12-31",
+        "validfrom[strictly_before]": "2026-02-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:53:12.712504+00:00",
+      "sha256": "f237ce04adb0c6fee3e416081d1c6efc726006cfea997321260e34f602643c0d"
+    },
+    {
+      "file": "raw/ned/de8c7440f5579f9c059c.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 3,
+        "validfrom[after]": "2025-12-31",
+        "validfrom[strictly_before]": "2026-02-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:53:14.308005+00:00",
+      "sha256": "9dc3e667e6b3be6bbe6c8edf806b2d2339e98f7fad4d25fe153d6cf47c9abae4"
+    },
+    {
+      "file": "raw/ned/b8cbf5091e069837d926.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 4,
+        "validfrom[after]": "2025-12-31",
+        "validfrom[strictly_before]": "2026-02-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:53:15.930102+00:00",
+      "sha256": "f127377baf3be9f5d1418fc684b69a5a86d603ff2a99e2206342592af30ad964"
+    },
+    {
+      "file": "raw/ned/a39c0078f21f66dc80c1.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 5,
+        "validfrom[after]": "2025-12-31",
+        "validfrom[strictly_before]": "2026-02-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:53:17.510301+00:00",
+      "sha256": "772a2a862e72e2f8450aa219ec793b9ad8c3bebc8817484ea7fa1133dd88e762"
+    },
+    {
+      "file": "raw/ned/ca769ba2b861b66097eb.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 6,
+        "validfrom[after]": "2025-12-31",
+        "validfrom[strictly_before]": "2026-02-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:53:19.065472+00:00",
+      "sha256": "e7d956d9ab85ac5c243642f37d375aed99fe3157a9896006695159ba0b24fbd4"
+    },
+    {
+      "file": "raw/entsoe/f6c4abe156e25d2355a3.xml",
+      "source": "entsoe",
+      "url": "https://web-api.tp.entsoe.eu/api",
+      "parameters": {
+        "documentType": "A44",
+        "in_Domain": "10YNL----------L",
+        "out_Domain": "10YNL----------L",
+        "periodStart": "202601312300",
+        "periodEnd": "202602282300"
+      },
+      "retrieved_at_utc": "2026-09-28T08:53:19.354268+00:00",
+      "sha256": "efc9b974bb052ddc769dca46ee260ae39882cbeb74d377b3e6d550c4f7e67767"
+    },
+    {
+      "file": "raw/ned/8d3ba691fa964c1a95ad.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 1,
+        "validfrom[after]": "2026-01-31",
+        "validfrom[strictly_before]": "2026-03-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:53:20.708558+00:00",
+      "sha256": "e98add3c2de77b8979134200706d6e3e7dbc7efe48d5020151880d4c3821a94c"
+    },
+    {
+      "file": "raw/ned/adcd7706c4fd5b1c7111.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 2,
+        "validfrom[after]": "2026-01-31",
+        "validfrom[strictly_before]": "2026-03-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:53:22.304652+00:00",
+      "sha256": "ff5f5fe8cb88ce22a543609bb419886d96089149808401ad91d9d7323120af73"
+    },
+    {
+      "file": "raw/ned/7ca8c522be58ca3bfd57.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 3,
+        "validfrom[after]": "2026-01-31",
+        "validfrom[strictly_before]": "2026-03-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:53:23.921169+00:00",
+      "sha256": "7884d07c663d4d29f8a41cb02f9818b553a467f1dc33ea86ac284bd5e9b9ecf2"
+    },
+    {
+      "file": "raw/ned/10ab75066b3d3dd5f520.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 4,
+        "validfrom[after]": "2026-01-31",
+        "validfrom[strictly_before]": "2026-03-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:53:25.502226+00:00",
+      "sha256": "fbf9280615b12a39b49c142a707f3c5abd1a335680faf2888be1c72688f189a0"
+    },
+    {
+      "file": "raw/ned/a092705fe1bd86bda62d.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 5,
+        "validfrom[after]": "2026-01-31",
+        "validfrom[strictly_before]": "2026-03-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:53:27.105265+00:00",
+      "sha256": "110b10c7e8b9cfbc74c3f491c2e3fdf23e7f93dafaf04c2c74d52042cab80820"
+    },
+    {
+      "file": "raw/entsoe/997fa8bd161e4b6779e7.xml",
+      "source": "entsoe",
+      "url": "https://web-api.tp.entsoe.eu/api",
+      "parameters": {
+        "documentType": "A44",
+        "in_Domain": "10YNL----------L",
+        "out_Domain": "10YNL----------L",
+        "periodStart": "202602282300",
+        "periodEnd": "202603312200"
+      },
+      "retrieved_at_utc": "2026-09-28T08:53:27.273340+00:00",
+      "sha256": "337ebb4f8815a855d2170b22096bbd3e46f912969929c43a86147bf64aa0fb7a"
+    },
+    {
+      "file": "raw/ned/b19a95314c6f585b75f4.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 1,
+        "validfrom[after]": "2026-02-28",
+        "validfrom[strictly_before]": "2026-04-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:53:28.705505+00:00",
+      "sha256": "a6acf7b8608df52deb5047ebe94ee4ff65945f0f9be346acece12bf16f700249"
+    },
+    {
+      "file": "raw/ned/d7bbd64c621704512356.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 2,
+        "validfrom[after]": "2026-02-28",
+        "validfrom[strictly_before]": "2026-04-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:53:30.305429+00:00",
+      "sha256": "cf7f685b5d8eb4e13a9e984bc4e491f461aca1144931c3a5ad8ee07a0a771a3c"
+    },
+    {
+      "file": "raw/ned/c2656b730ffd2dc1db40.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 3,
+        "validfrom[after]": "2026-02-28",
+        "validfrom[strictly_before]": "2026-04-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:53:31.915450+00:00",
+      "sha256": "75cf5bad20abdb3ae1afe88a7f9aac4abc39296704728dd618c91827c7655ccc"
+    },
+    {
+      "file": "raw/ned/eb63357cfc1dd6a9fbec.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 4,
+        "validfrom[after]": "2026-02-28",
+        "validfrom[strictly_before]": "2026-04-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:53:33.513432+00:00",
+      "sha256": "c73c3998c9985724064e90a8c3076dc09f7f00448b5a98f9ff1874404f606db6"
+    },
+    {
+      "file": "raw/ned/57a855f538bd2b6d8d2a.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 5,
+        "validfrom[after]": "2026-02-28",
+        "validfrom[strictly_before]": "2026-04-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:53:35.118991+00:00",
+      "sha256": "4d6df698bc1b4df4bdd1a6a0eea81d6b90fba0c51bd34ab3d5bb29237c2f4529"
+    },
+    {
+      "file": "raw/ned/750e90ecad6c160fbe4a.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 6,
+        "validfrom[after]": "2026-02-28",
+        "validfrom[strictly_before]": "2026-04-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:53:36.672081+00:00",
+      "sha256": "ad6ac826b1ca7cba0262c6c2e28947bb7e51a4f152d1cb2b01c1ca61bb40f3dd"
+    },
+    {
+      "file": "raw/entsoe/42b01ff17da12bca1cdf.xml",
+      "source": "entsoe",
+      "url": "https://web-api.tp.entsoe.eu/api",
+      "parameters": {
+        "documentType": "A44",
+        "in_Domain": "10YNL----------L",
+        "out_Domain": "10YNL----------L",
+        "periodStart": "202603312200",
+        "periodEnd": "202604302200"
+      },
+      "retrieved_at_utc": "2026-09-28T08:53:36.910354+00:00",
+      "sha256": "16b25b8ef0ad8e0d446ca813794185fa2f8783ee8ee0f816ba3078a579e8f6e8"
+    },
+    {
+      "file": "raw/ned/63235f44a76898587d76.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 1,
+        "validfrom[after]": "2026-03-31",
+        "validfrom[strictly_before]": "2026-05-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:53:38.318035+00:00",
+      "sha256": "4e5fa0bb976591879e11ca598f9254c790b1041f88fb9a33417d91c9f7f99751"
+    },
+    {
+      "file": "raw/ned/fafb83ffc8256d1b3f27.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 2,
+        "validfrom[after]": "2026-03-31",
+        "validfrom[strictly_before]": "2026-05-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:53:39.982458+00:00",
+      "sha256": "dfd4e7d707cce89287f6f7dafa718eeae4eb1cc9009d41fffa9cc28c9f5500a2"
+    },
+    {
+      "file": "raw/ned/6d7708f9e9d649547470.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 3,
+        "validfrom[after]": "2026-03-31",
+        "validfrom[strictly_before]": "2026-05-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:53:41.509190+00:00",
+      "sha256": "9cd26a985d0e712af710bcfd5d3ca42f09a830b5017fd7a67c825d3c581a6a48"
+    },
+    {
+      "file": "raw/ned/5073290d71d2a9f38630.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 4,
+        "validfrom[after]": "2026-03-31",
+        "validfrom[strictly_before]": "2026-05-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:53:43.113280+00:00",
+      "sha256": "06553d98e06c796af84b7fb3b1dbc4d567dc0273950109383036b7943c808bf4"
+    },
+    {
+      "file": "raw/ned/daa2b57bf91a9b2a6dd2.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 5,
+        "validfrom[after]": "2026-03-31",
+        "validfrom[strictly_before]": "2026-05-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:53:44.710053+00:00",
+      "sha256": "9109ea5d5a467d082dc429b742d87622e32334165e7279a3d353ba388547536c"
+    },
+    {
+      "file": "raw/ned/d7749e18277a5c6197b8.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 6,
+        "validfrom[after]": "2026-03-31",
+        "validfrom[strictly_before]": "2026-05-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:53:46.267564+00:00",
+      "sha256": "2b6c06f18104be7533b5d14bdc61e8c3ef12f574e2aee02363876afe61f0a2bc"
+    },
+    {
+      "file": "raw/entsoe/d795d5ed9b8f331deb99.xml",
+      "source": "entsoe",
+      "url": "https://web-api.tp.entsoe.eu/api",
+      "parameters": {
+        "documentType": "A44",
+        "in_Domain": "10YNL----------L",
+        "out_Domain": "10YNL----------L",
+        "periodStart": "202604302200",
+        "periodEnd": "202605312200"
+      },
+      "retrieved_at_utc": "2026-09-28T08:53:46.462077+00:00",
+      "sha256": "61d027a5f7f79dfe14dfc76bad80629faf781d4092e6dfa074c7c2c8c340e2c8"
+    },
+    {
+      "file": "raw/ned/9496e6a84f5ce746454e.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 1,
+        "validfrom[after]": "2026-04-30",
+        "validfrom[strictly_before]": "2026-06-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:53:47.931439+00:00",
+      "sha256": "133dbb6f6551c9ed5eea42c72be6bb35c564c989a2377d6022e41bc67a8c3966"
+    },
+    {
+      "file": "raw/ned/8f7d52b80e37cf63c950.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 2,
+        "validfrom[after]": "2026-04-30",
+        "validfrom[strictly_before]": "2026-06-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:53:52.821800+00:00",
+      "sha256": "a74d2437cfc177911180cbace33db3b4d0d90294fa7b9d64aa2d900c330f4547"
+    },
+    {
+      "file": "raw/ned/27b6268eaa54f59f1101.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 3,
+        "validfrom[after]": "2026-04-30",
+        "validfrom[strictly_before]": "2026-06-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:53:53.826062+00:00",
+      "sha256": "4b9d75cd4b159f49af8c8c3feda4a3da5c8c4ab500022435f5d34c3edecf2e14"
+    },
+    {
+      "file": "raw/ned/dddbf9aaf67816587183.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 4,
+        "validfrom[after]": "2026-04-30",
+        "validfrom[strictly_before]": "2026-06-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:53:54.539392+00:00",
+      "sha256": "7ec81004dde32c4819b65f7572d91eb0960efef6e977d49c592c2f3143756897"
+    },
+    {
+      "file": "raw/ned/ec3dce31756e3fa2c9ac.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 5,
+        "validfrom[after]": "2026-04-30",
+        "validfrom[strictly_before]": "2026-06-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:53:56.386826+00:00",
+      "sha256": "4417f5cd294b6e191d8e1837f71d7bc85815b6cd8a1894b1eb2519d877d86a67"
+    },
+    {
+      "file": "raw/ned/1e910c94d540f045cdea.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 6,
+        "validfrom[after]": "2026-04-30",
+        "validfrom[strictly_before]": "2026-06-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:53:57.790642+00:00",
+      "sha256": "50cc4bad9b08756a98239a7cb310d475a5cc02a04e232d078196e5e092d7dc98"
+    },
+    {
+      "file": "raw/entsoe/59e9592af801a7377346.xml",
+      "source": "entsoe",
+      "url": "https://web-api.tp.entsoe.eu/api",
+      "parameters": {
+        "documentType": "A44",
+        "in_Domain": "10YNL----------L",
+        "out_Domain": "10YNL----------L",
+        "periodStart": "202605312200",
+        "periodEnd": "202606302200"
+      },
+      "retrieved_at_utc": "2026-09-28T08:53:57.996632+00:00",
+      "sha256": "6be0be42e597be62c9f162048a2794f4eb4f55ea91884d3c3748b94e23355954"
+    },
+    {
+      "file": "raw/ned/385d685111c05b2ca571.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 1,
+        "validfrom[after]": "2026-05-31",
+        "validfrom[strictly_before]": "2026-07-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:53:59.577872+00:00",
+      "sha256": "bf87d93be121b47abe9eb80e083ebd2c34bbef2aec090d134c3b1b94acd02250"
+    },
+    {
+      "file": "raw/ned/0df36501c7be67d7acf0.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 2,
+        "validfrom[after]": "2026-05-31",
+        "validfrom[strictly_before]": "2026-07-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:54:01.046604+00:00",
+      "sha256": "f393638393c0505fa9d76b792ab56a0213e9895d4943c8caa58ad029cf15a683"
+    },
+    {
+      "file": "raw/ned/360d1a68baefecb9f22e.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 3,
+        "validfrom[after]": "2026-05-31",
+        "validfrom[strictly_before]": "2026-07-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:54:02.787015+00:00",
+      "sha256": "35e99e9cc50bdc1062f7c70c95e018454368c03559a9431973a28bca94655475"
+    },
+    {
+      "file": "raw/ned/f3dddb44cc2bd8c2e26d.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 4,
+        "validfrom[after]": "2026-05-31",
+        "validfrom[strictly_before]": "2026-07-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:54:04.318862+00:00",
+      "sha256": "08e40e9da0be62cc7dc47b66410082ad77b4bffc6483f002d1a281a285e70e90"
+    },
+    {
+      "file": "raw/ned/50d9573277e3bcb59224.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 5,
+        "validfrom[after]": "2026-05-31",
+        "validfrom[strictly_before]": "2026-07-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:54:05.935173+00:00",
+      "sha256": "10d0ed915dd43b13532290e1b8ef50a9a5a173dc2d9b1e5f234595e08f7d2191"
+    },
+    {
+      "file": "raw/ned/0619641dc904e10ad3eb.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 6,
+        "validfrom[after]": "2026-05-31",
+        "validfrom[strictly_before]": "2026-07-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:54:07.304440+00:00",
+      "sha256": "f611c7b12edd544a9564551558dae18368dacf63344eff29054720880859a8b1"
+    },
+    {
+      "file": "raw/entsoe/fd76f41c2a2d144abeaf.xml",
+      "source": "entsoe",
+      "url": "https://web-api.tp.entsoe.eu/api",
+      "parameters": {
+        "documentType": "A44",
+        "in_Domain": "10YNL----------L",
+        "out_Domain": "10YNL----------L",
+        "periodStart": "202606302200",
+        "periodEnd": "202607312200"
+      },
+      "retrieved_at_utc": "2026-09-28T08:54:08.048338+00:00",
+      "sha256": "7ab716f56ef5a311c18b10d8e487779ec7a19209139956f19bd640318a51c882"
+    },
+    {
+      "file": "raw/ned/8b00a5a5b4e09127d61f.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 1,
+        "validfrom[after]": "2026-06-30",
+        "validfrom[strictly_before]": "2026-08-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:54:09.188366+00:00",
+      "sha256": "9bbd5f38a04a2cdcb23b02c5aba3cf85fd98ef384938df95dc9e3c85620f32c6"
+    },
+    {
+      "file": "raw/ned/5d5bda6ddfab4f20a1ce.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 2,
+        "validfrom[after]": "2026-06-30",
+        "validfrom[strictly_before]": "2026-08-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:54:10.621824+00:00",
+      "sha256": "912678b04a237a14b4d4fab4d114b7051f19b2356b22f6676b1a195871a05d70"
+    },
+    {
+      "file": "raw/ned/d2aeed21576c8b287f91.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 3,
+        "validfrom[after]": "2026-06-30",
+        "validfrom[strictly_before]": "2026-08-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:54:12.154708+00:00",
+      "sha256": "79e5aa98db2675b30eaa5c409cedfd1b48fe15f4e15213e887fbc05ab7f2ca28"
+    },
+    {
+      "file": "raw/ned/128e1bdd7482971d0322.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 4,
+        "validfrom[after]": "2026-06-30",
+        "validfrom[strictly_before]": "2026-08-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:54:13.749921+00:00",
+      "sha256": "5e9dc9870d655df7f82c5f14e139bce7ed7600f47f82bbe5ce29751db7f76e89"
+    },
+    {
+      "file": "raw/ned/eca5595a7396d504e2d3.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 5,
+        "validfrom[after]": "2026-06-30",
+        "validfrom[strictly_before]": "2026-08-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:54:15.346930+00:00",
+      "sha256": "40636ce0dd920d63e3deb856e97bb8440a77e802b767fb9280fb5b95bf43b028"
+    },
+    {
+      "file": "raw/ned/10300e281712c42bbda1.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 6,
+        "validfrom[after]": "2026-06-30",
+        "validfrom[strictly_before]": "2026-08-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:54:16.923046+00:00",
+      "sha256": "af1c08528bc24ee4fe570aa264eedba20e8d78a35ac43cce0d3abb614befca65"
+    },
+    {
+      "file": "raw/entsoe/d822c6925cbc5383c2b9.xml",
+      "source": "entsoe",
+      "url": "https://web-api.tp.entsoe.eu/api",
+      "parameters": {
+        "documentType": "A44",
+        "in_Domain": "10YNL----------L",
+        "out_Domain": "10YNL----------L",
+        "periodStart": "202607312200",
+        "periodEnd": "202608312200"
+      },
+      "retrieved_at_utc": "2026-09-28T08:54:17.076648+00:00",
+      "sha256": "dde7a3ae50ecc6b5533df524163dca96d8b66915886794b01ff2a626f0a1b5b2"
+    },
+    {
+      "file": "raw/ned/3cb60b503ab539d0d25d.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 1,
+        "validfrom[after]": "2026-07-31",
+        "validfrom[strictly_before]": "2026-09-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:54:18.568292+00:00",
+      "sha256": "a1eaad7f0e5c85bc2296a4a57cca45f62e10ad2c5c59dd3ea112f8f4983a9e3f"
+    },
+    {
+      "file": "raw/ned/a4ea1935e26b285c128e.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 2,
+        "validfrom[after]": "2026-07-31",
+        "validfrom[strictly_before]": "2026-09-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:54:20.144435+00:00",
+      "sha256": "74a38f317cfe212ababe934eb50b9a95ade42f908e90547fb75afb418e5520cc"
+    },
+    {
+      "file": "raw/ned/1eba089769497839a600.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 3,
+        "validfrom[after]": "2026-07-31",
+        "validfrom[strictly_before]": "2026-09-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:54:21.755424+00:00",
+      "sha256": "1fe1d21fd1810d481f1241182dd8b606bda333cba2c9328b97df8bca4218da74"
+    },
+    {
+      "file": "raw/ned/eeab87fc245ae9197681.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 4,
+        "validfrom[after]": "2026-07-31",
+        "validfrom[strictly_before]": "2026-09-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:54:23.352250+00:00",
+      "sha256": "9b6988cecc0ece221596deb35b6e0790d9974cabf8a114e8a0b03777df4226b0"
+    },
+    {
+      "file": "raw/ned/0821f8d28e0b18ce7371.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 5,
+        "validfrom[after]": "2026-07-31",
+        "validfrom[strictly_before]": "2026-09-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:54:24.954765+00:00",
+      "sha256": "b0accf2e122b283c44f9eb43896794c8a4c91f5fb070a46a7c99b8329fd681ed"
+    },
+    {
+      "file": "raw/ned/9d33e5b413bc72d372fe.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 6,
+        "validfrom[after]": "2026-07-31",
+        "validfrom[strictly_before]": "2026-09-01"
+      },
+      "retrieved_at_utc": "2026-09-28T08:54:26.506710+00:00",
+      "sha256": "8f9d103303b898472577a2b0e00d5b96361cdcc7d54e97ec8b5de78e92008340"
+    },
+    {
+      "file": "raw/entsoe/7758aa8392116eaaae50.xml",
+      "source": "entsoe",
+      "url": "https://web-api.tp.entsoe.eu/api",
+      "parameters": {
+        "documentType": "A44",
+        "in_Domain": "10YNL----------L",
+        "out_Domain": "10YNL----------L",
+        "periodStart": "202608312200",
+        "periodEnd": "202609272200"
+      },
+      "retrieved_at_utc": "2026-09-28T08:54:26.746815+00:00",
+      "sha256": "81536f7253cf4f1daed3fa311a894ec04fbfb208b55a9324e437ec70f7d55cf9"
+    },
+    {
+      "file": "raw/ned/c05b0ed9d8e5f3c11052.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 1,
+        "validfrom[after]": "2026-08-31",
+        "validfrom[strictly_before]": "2026-09-28"
+      },
+      "retrieved_at_utc": "2026-09-28T08:54:28.145296+00:00",
+      "sha256": "6836faeb72e63289762f9d3ea024ed6876766e1d141c1651a200abfb19881f63"
+    },
+    {
+      "file": "raw/ned/d55e5a27c5914f108a1f.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 2,
+        "validfrom[after]": "2026-08-31",
+        "validfrom[strictly_before]": "2026-09-28"
+      },
+      "retrieved_at_utc": "2026-09-28T08:54:29.745138+00:00",
+      "sha256": "9322cc481d3f8af28f5a73497c83846de66349ceffa3b6f8ca5665c3d64cbbca"
+    },
+    {
+      "file": "raw/ned/b6c26d228a8593313366.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 3,
+        "validfrom[after]": "2026-08-31",
+        "validfrom[strictly_before]": "2026-09-28"
+      },
+      "retrieved_at_utc": "2026-09-28T08:54:31.382357+00:00",
+      "sha256": "5adfae7bb5ba8573ab282bc5268121ae625e19660434b7d00ff065039efa0b58"
+    },
+    {
+      "file": "raw/ned/dc335e8c5a0e08762bc6.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 4,
+        "validfrom[after]": "2026-08-31",
+        "validfrom[strictly_before]": "2026-09-28"
+      },
+      "retrieved_at_utc": "2026-09-28T08:54:32.953903+00:00",
+      "sha256": "4e14b5589e397d94a67956b82652340014be95e96605b9f007098f4494a44da6"
+    },
+    {
+      "file": "raw/ned/83deee233333d2329f2d.json",
+      "source": "ned",
+      "url": "https://api.ned.nl/v1/utilizations",
+      "parameters": {
+        "point": 0,
+        "type": 27,
+        "activity": 1,
+        "classification": 2,
+        "granularity": 5,
+        "granularitytimezone": 0,
+        "page": 5,
+        "validfrom[after]": "2026-08-31",
+        "validfrom[strictly_before]": "2026-09-28"
+      },
+      "retrieved_at_utc": "2026-09-28T08:54:34.528942+00:00",
+      "sha256": "c3e0d50dd36d4c09adb152154d058116c4e6dd0468a5c56b269d916d11f6706d"
+    }
+  ],
+  "price_basis": "ENTSO-E NL day-ahead EUR/MWh, duration-weighted hourly means",
+  "carbon_basis": "NED ElectricityMix, Providing, Current; Dutch production CO2 intensity; gCO2/kWh",
+  "carbon_scope": "Production-average proxy; no imported-electricity flow tracing or marginal-emissions model",
+  "hourly_sha256": "b54ef516164fbff4ead7bdf50f771221c4cc5a90ec8fa75a4f51f4c5b71ed4c7"
+}
