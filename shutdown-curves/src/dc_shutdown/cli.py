@@ -1,12 +1,15 @@
 import argparse
 from pathlib import Path
 
+from dotenv import load_dotenv
+
 from .analysis import make_curves
 from .data import credentials, date_bounds, fetch_dataset, load_dataset
 from .report import write_outputs
 
 
 def main():
+    load_dotenv()
     parser = argparse.ArgumentParser(
         description="Dutch electricity cost and carbon versus data-center uptime"
     )
@@ -18,11 +21,6 @@ def main():
     parser.add_argument("--data-dir", type=Path, default=Path("data"))
     parser.add_argument("--output-dir", type=Path, default=Path("results"))
     parser.add_argument(
-        "--legacy-keys",
-        type=Path,
-        help="Read API-key string assignments from the earlier project's api_key.py",
-    )
-    parser.add_argument(
         "--refresh", action="store_true", help="Refetch raw responses; default reuses the cache"
     )
     parser.add_argument(
@@ -32,12 +30,10 @@ def main():
     try:
         if args.command in ("fetch", "run"):
             start, end = date_bounds(args.start, args.end)
-            frame, metadata = fetch_dataset(
-                start, end, args.data_dir, credentials(args.legacy_keys), args.refresh
-            )
+            frame, metadata = fetch_dataset(start, end, args.data_dir, credentials(), args.refresh)
             print(f"Validated {len(frame):,} complete hours; saved {args.data_dir / 'hourly.csv'}")
         else:
-            if args.start or args.end or args.refresh or args.legacy_keys:
+            if args.start or args.end or args.refresh:
                 parser.error(
                     "analyze reads the saved dataset; date, refresh, and credential options apply to fetch/run"
                 )

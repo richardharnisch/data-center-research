@@ -1,10 +1,9 @@
 """Source clients adapted from the earlier price-forecasting project's request settings.
 
-Credentials are read without executing the legacy Python file. Raw responses and
-request provenance are cached; tokens never appear in saved request metadata.
+Credentials come from the process environment. Raw responses and request
+provenance are cached; tokens never appear in saved request metadata.
 """
 
-import ast
 import hashlib
 import json
 import os
@@ -26,21 +25,9 @@ PRICE = "price_eur_per_mwh"
 CARBON = "carbon_gco2_per_kwh"
 
 
-def credentials(legacy_path: Path | None = None) -> dict:
-    keys = {k: os.environ.get(k, "") for k in ("ENTSOE_API_KEY", "NED_API_KEY")}
-    if legacy_path:
-        for node in ast.parse(legacy_path.expanduser().read_text()).body:
-            if not isinstance(node, ast.Assign) or not isinstance(node.value, ast.Constant):
-                continue
-            for target in node.targets:
-                if (
-                    isinstance(target, ast.Name)
-                    and target.id in keys
-                    and not keys[target.id]
-                    and isinstance(node.value.value, str)
-                ):
-                    keys[target.id] = node.value.value
-    return keys
+def credentials() -> dict:
+    """Return provider credentials loaded into the process environment."""
+    return {key: os.environ.get(key, "") for key in ("ENTSOE_API_KEY", "NED_API_KEY")}
 
 
 def date_bounds(start: str | None, end: str | None) -> tuple[pd.Timestamp, pd.Timestamp]:
@@ -68,7 +55,7 @@ class CachedClient:
         if not path.exists() or not metadata_path.exists() or self.refresh:
             if not key:
                 raise ValueError(
-                    f"Missing {source.upper()}_API_KEY; use environment variables or --legacy-keys."
+                    f"Missing {source.upper()}_API_KEY; set it in .env or the environment."
                 )
             request_params = dict(params)
             headers = {}

@@ -14,14 +14,14 @@ uv run shutdown-curves analyze
 
 The included `data/hourly.csv` contains the actual collected data, so analysis requires no credentials or network access. The default facility consumes 1 MW when on and zero when off. Set `--power-mw 10` to scale absolute euros and kilograms to a 10 MW facility; percentage savings do not change.
 
-For a fresh download, supply `ENTSOE_API_KEY` and `NED_API_KEY` as environment variables. You can also copy `.env.example` to `.env` and fill in your keys; `.env` is ignored by Git. From the experiment directory, download the same period with:
+For a fresh download, copy `.env.example` to `.env` and fill in your `ENTSOE_API_KEY` and `NED_API_KEY`; `.env` is ignored by Git. The command loads `.env` automatically:
 
 ```bash
-uv run --env-file .env shutdown-curves run \
+uv run shutdown-curves run \
   --start 2025-09-28 --end 2026-09-28
 ```
 
-Omit `--env-file .env` if the keys are already exported in your shell. The optional `--legacy-keys` argument accepts a credential file you choose; no location is assumed. Environment variables take precedence over that file. Only literal string assignments are read; the file is never executed. Keys are not copied to generated files or logged.
+Exported environment variables take precedence over values in `.env`. Keys are not copied to generated files or logged.
 
 Omitting dates selects the year ending at the start of today in Europe/Amsterdam. `--end` is exclusive. The delivered interval is 28 September 2025 through 27 September 2026. Raw responses are reused by default; add `--refresh` to retrieve revisions from the providers. If a provider has not yet published the last required day, fetching fails with a coverage report; choose an explicit earlier `--end` to obtain a full year of complete data. There is no silent shortening or filling of the study period.
 
